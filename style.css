@@ -1,9 +1,8 @@
-/* Paleta de Colores EDITABLE (Respetada al 100%) */
+/* Paleta EDITABLE - María Cruz */
 :root {
   --bg: #000000;
   --text: #ffffff;
   --gray-muted: #888888;
-  --accent: #ffffff;
 }
 
 * {
@@ -20,37 +19,34 @@ body {
   overflow-x: hidden;
 }
 
-/* Navegación - Ajustada para mayor compatibilidad móvil */
+/* NAVEGACIÓN */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 5%; /* Un poco más compacto para móvil */
+  padding: 30px 8%;
   position: absolute;
   width: 100%;
   z-index: 100;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: var(--text);
-  margin-left: 15px;
-  font-size: 0.7rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: 0.3s opacity;
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
 }
 
 .btn-contact {
-  border: 1px solid var(--text);
-  padding: 8px 15px;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 10px 20px;
   border-radius: 100px;
+  color: white;
+  font-size: 0.8rem;
 }
 
-/* Hero Section */
+/* HERO */
 header {
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,157 +57,86 @@ header {
 
 .main-logo {
   width: 120px;
-  height: auto;
-  margin-bottom: 30px;
-}
-
-h1 {
-  font-size: clamp(2.2rem, 8vw, 4.5rem);
-  font-weight: 800;
-  line-height: 1;
   margin-bottom: 20px;
 }
 
+h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1;
+}
 h1 span {
   color: transparent;
-  -webkit-text-stroke: 1px var(--text);
+  -webkit-text-stroke: 1px white;
 }
 
 .hero-subtitle {
   color: var(--gray-muted);
-  font-size: 1rem;
-  max-width: 450px;
-  margin: 20px auto 0;
+  margin-top: 20px;
+  max-width: 600px;
 }
 
-/* SECCIÓN DE CAPACIDADES (TOTALMENTE CENTRADA) */
+/* SECCIÓN CAPACIDADES (ESTO ES LO QUE TE FALTA) */
 .servicios-tech {
-  padding: 100px 10%;
+  padding: 80px 10%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra los items horizontalmente */
-  text-align: center; /* Centra el texto por dentro */
-  background: #000;
+  align-items: center; /* CENTRA TODO */
+  text-align: center;
 }
 
 .tech-item {
-  max-width: 700px; /* Para que las líneas no sean eternas y cansen la vista */
-  margin-bottom: 60px; /* Espacio entre cada solución */
-  padding: 20px;
+  max-width: 700px;
+  margin-bottom: 50px;
 }
 
 .tech-item h3 {
-  font-size: 1.4rem;
-  font-weight: 800;
-  margin-bottom: 15px;
-  letter-spacing: -0.5px;
-  color: var(--text);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
 }
-
 .tech-item p {
-  font-size: 1.1rem;
   color: var(--gray-muted);
-  line-height: 1.5;
+  font-size: 1.1rem;
 }
 
-.tech-item b {
-  color: var(--text); /* Resalta las soluciones clave en blanco puro */
-  border-bottom: 1px solid #333;
-}
-
-/* Sección de Descarga del Menú (PDF) */
+/* BOTÓN PDF */
 .downloads {
   text-align: center;
-  padding: 60px 10% 120px;
+  padding: 100px 10%;
 }
-
 .download-card {
   background: #0a0a0a;
-  border: 1px solid #1a1a1a;
-  padding: 50px 30px;
-  border-radius: 30px;
-  display: inline-block; /* Para que el cuadro se ajuste al contenido */
-}
-
-.downloads h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-  color: var(--text);
+  padding: 50px;
+  border-radius: 20px;
+  border: 1px solid #222;
 }
 
 .btn-download {
   display: inline-block;
-  margin-top: 25px;
-  background-color: var(--text);
-  color: var(--bg);
+  margin-top: 20px;
+  background: white;
+  color: black;
   text-decoration: none;
-  padding: 15px 40px;
+  padding: 15px 30px;
   border-radius: 10px;
   font-weight: 800;
-  transition: 0.3s;
 }
 
-.btn-download:hover {
-  opacity: 0.8;
-  transform: scale(1.02);
+/* FOOTER */
+.footer-note {
+  text-align: center;
+  padding: 60px;
+  color: var(--gray-muted);
+  border-top: 1px solid #111;
 }
 
-/* Lógica de la Animación (Asegúrate de tener el script.js optimizado) */
+/* ANIMACIONES */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  transition: 0.8s all ease;
 }
-
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* FOOTER NOTE (Con tu nombre y derechos) */
-.footer-note {
-  text-align: center;
-  padding: 100px 10% 60px;
-  border-top: 1px solid #111; /* Una línea muy sutil para separar */
-}
-
-.motto {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: var(--text);
-  margin-bottom: 30px;
-  letter-spacing: 1px;
-}
-
-.credits p {
-  font-size: 0.75rem;
-  color: var(--gray-muted);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.brand-tag {
-  font-weight: 800;
-  margin-top: 5px;
-  opacity: 0.5;
-}
-
-/* Ajustes para móviles muy pequeños */
-@media (max-width: 480px) {
-  nav {
-    padding: 20px 5%;
-  }
-  .nav-links a {
-    margin-left: 10px;
-    font-size: 0.6rem;
-  }
-  h1 {
-    font-size: 2.5rem;
-  }
-  .tech-item h3 {
-    font-size: 1.2rem;
-  }
-  .tech-item p {
-    font-size: 1rem;
-  }
 }
