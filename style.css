@@ -1,4 +1,4 @@
-/* Paleta de Colores EDITABLE */
+/* Paleta de Colores EDITABLE (Respetada al 100%) */
 :root {
   --bg: #000000;
   --text: #ffffff;
@@ -20,45 +20,35 @@ body {
   overflow-x: hidden;
 }
 
-/* Navegación Estilo Agencia */
+/* Navegación - Ajustada para mayor compatibilidad móvil */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 8%;
+  padding: 30px 5%; /* Un poco más compacto para móvil */
   position: absolute;
   width: 100%;
   z-index: 100;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-}
-
 .nav-links a {
   text-decoration: none;
   color: var(--text);
-  margin-left: 35px;
-  font-size: 0.8rem;
+  margin-left: 15px;
+  font-size: 0.7rem;
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   transition: 0.3s opacity;
 }
 
-.nav-links a:hover {
-  opacity: 0.5;
-}
-
 .btn-contact {
-  border: 1px solid white;
-  padding: 10px 25px;
+  border: 1px solid var(--text);
+  padding: 8px 15px;
   border-radius: 100px;
 }
 
-/* Hero Section (Ajuste de Escala) */
+/* Hero Section */
 header {
   height: 100vh;
   display: flex;
@@ -70,110 +60,158 @@ header {
 }
 
 .main-logo {
-  width: 150px; /* Tamaño controlado, no gigante */
+  width: 120px;
   height: auto;
-  margin-bottom: 40px;
-  /* Esto evita que se vea borroso o gigante */
+  margin-bottom: 30px;
 }
 
 h1 {
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2.2rem, 8vw, 4.5rem);
   font-weight: 800;
-  line-height: 0.9;
+  line-height: 1;
   margin-bottom: 20px;
 }
 
 h1 span {
   color: transparent;
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px var(--text);
 }
 
-header p {
+.hero-subtitle {
   color: var(--gray-muted);
-  font-size: 1.1rem;
-  max-width: 500px; /* Esto limita el ancho para que se vea elegante */
-  text-align: center; /* Centra el texto por dentro */
-  margin-left: auto; /* Estos dos centran el "bloque" del párrafo */
-  margin-right: auto;
-  margin-top: 20px; /* Un poco de aire respecto al título */
+  font-size: 1rem;
+  max-width: 450px;
+  margin: 20px auto 0;
 }
 
-/* El Bento Grid (Donde irán tus trabajos) */
-.bento-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 100px 8%;
-  background: #050505;
-}
-
-.bento-item {
-  background: #111;
-  border: 1px solid #222;
-  height: 350px;
-  border-radius: 24px;
-  padding: 40px;
+/* SECCIÓN DE CAPACIDADES (TOTALMENTE CENTRADA) */
+.servicios-tech {
+  padding: 100px 10%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  transition: 0.4s all ease;
+  align-items: center; /* Centra los items horizontalmente */
+  text-align: center; /* Centra el texto por dentro */
+  background: #000;
 }
 
-.bento-item:hover {
-  border-color: #444;
-  transform: translateY(-10px);
+.tech-item {
+  max-width: 700px; /* Para que las líneas no sean eternas y cansen la vista */
+  margin-bottom: 60px; /* Espacio entre cada solución */
+  padding: 20px;
 }
 
-.bento-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-.bento-content p {
-  font-size: 0.9rem;
-  color: var(--gray-muted);
-}
-
-.tag {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #444; /* Un gris oscuro que resalte sutilmente */
+.tech-item h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
   margin-bottom: 15px;
-  display: block;
+  letter-spacing: -0.5px;
+  color: var(--text);
 }
 
-.btn-mini {
-  margin-top: 20px;
+.tech-item p {
+  font-size: 1.1rem;
+  color: var(--gray-muted);
+  line-height: 1.5;
+}
+
+.tech-item b {
+  color: var(--text); /* Resalta las soluciones clave en blanco puro */
+  border-bottom: 1px solid #333;
+}
+
+/* Sección de Descarga del Menú (PDF) */
+.downloads {
+  text-align: center;
+  padding: 60px 10% 120px;
+}
+
+.download-card {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  padding: 50px 30px;
+  border-radius: 30px;
+  display: inline-block; /* Para que el cuadro se ajuste al contenido */
+}
+
+.downloads h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--text);
+}
+
+.btn-download {
   display: inline-block;
-  color: white;
+  margin-top: 25px;
+  background-color: var(--text);
+  color: var(--bg);
   text-decoration: none;
-  border-bottom: 1px solid white;
-  font-size: 0.8rem;
-  padding-bottom: 5px;
+  padding: 15px 40px;
+  border-radius: 10px;
+  font-weight: 800;
+  transition: 0.3s;
 }
 
-/* Animación de entrada para el Hero */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.btn-download:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
 }
 
-.hero-content {
-  animation: fadeInUp 1.2s ease-out forwards;
+/* Lógica de la Animación (Asegúrate de tener el script.js optimizado) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
 }
 
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* FOOTER NOTE (Con tu nombre y derechos) */
 .footer-note {
   text-align: center;
-  padding: 100px 10%;
+  padding: 100px 10% 60px;
+  border-top: 1px solid #111; /* Una línea muy sutil para separar */
+}
+
+.motto {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.credits p {
+  font-size: 0.75rem;
   color: var(--gray-muted);
-  font-style: italic;
-  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.brand-tag {
+  font-weight: 800;
+  margin-top: 5px;
+  opacity: 0.5;
+}
+
+/* Ajustes para móviles muy pequeños */
+@media (max-width: 480px) {
+  nav {
+    padding: 20px 5%;
+  }
+  .nav-links a {
+    margin-left: 10px;
+    font-size: 0.6rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  .tech-item h3 {
+    font-size: 1.2rem;
+  }
+  .tech-item p {
+    font-size: 1rem;
+  }
 }
