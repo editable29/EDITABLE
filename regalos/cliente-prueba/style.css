@@ -1,0 +1,82 @@
+/* Reseteo básico y fondo */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F4F1EA; /* Color avena cálido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+.contenedor {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Estilos de la caja */
+.caja-animada {
+    width: 300px;
+    border-radius: 20px; /* Redondea las esquinas del JPEG */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.5s ease;
+    /* Animación para que "lata" e invite a hacer clic */
+    animation: latido 2s infinite; 
+}
+
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Clase que se activa al hacer clic (desaparece la caja) */
+.caja-animada.abierta {
+    transform: scale(1.5);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Estilos de la sorpresa (Foto y texto) */
+.oculto {
+    display: none;
+    opacity: 0;
+}
+
+.mostrar-sorpresa {
+    display: block;
+    animation: aparecer 1s forwards;
+    animation-delay: 0.3s; /* Espera un poquito a que la caja se quite */
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.titulo {
+    font-family: 'Fredoka', sans-serif; /* Tipografía alegre y redonda */
+    color: #c92a2a; /* Rojo carmín para el título */
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.foto-nino {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%; /* Hace la foto redonda */
+    border: 5px solid #00b4d8; /* Borde turquesa a juego con la caja */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.mensaje {
+    color: #4a4a4a;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
