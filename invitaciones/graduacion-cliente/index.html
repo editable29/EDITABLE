@@ -134,21 +134,35 @@
 
     <!-- Todo el código interactivo (JavaScript) blindado dentro del HTML -->
     <script>
-        window.addEventListener('load', () => {
+        // Función para quitar la pantalla de carga
+        function ocultarPreloader() {
             const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => { preloader.style.display = 'none'; }, 500);
-        });
+            if (preloader.style.display !== 'none') {
+                preloader.style.opacity = '0';
+                setTimeout(() => { preloader.style.display = 'none'; }, 500);
+            }
+        }
+
+        // Plan A: Si todo carga bien rápido
+        window.addEventListener('load', ocultarPreloader);
+
+        // Plan B: Anti-bloqueo para celulares (Fuerza la aparición a los 2.5 segundos máximo)
+        setTimeout(ocultarPreloader, 2500);
 
         const sello = document.getElementById('sello');
         const envoltura = document.getElementById('envoltura');
         const tarjeta = document.getElementById('tarjeta');
-        const musica = document.getElementById('musica');
         const textoContador = document.getElementById('contador');
+        const musica = document.getElementById('musica');
 
         sello.addEventListener('click', () => {
             musica.volume = 0.5;
-            musica.play().catch(e => console.log("Audio", e));
+            // Play() envuelto de forma segura para móviles
+            let playPromise = musica.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => console.log("El navegador requiere interacción previa"));
+            }
+
             sello.style.opacity = '0';
             
             setTimeout(() => {
