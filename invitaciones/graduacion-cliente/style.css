@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #0B132B; 
+    background-color: #0B132B; /* Azul Medianoche */
     color: #F5F5F5;
     font-family: 'Montserrat', sans-serif;
     display: flex;
@@ -68,7 +68,7 @@ body {
     width: 85%;
     background-color: rgba(11, 19, 43, 0.95);
     border: 2px solid #D4AF37; 
-    padding: 40px 15px; /* Ajustamos el padding al quitar los botones */
+    padding: 40px 15px; 
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
     z-index: 5;
@@ -87,7 +87,7 @@ body {
     visibility: visible;
     transform: translate(-50%, -50%);
     transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
-    /* Se mantiene flotando sutilmente después de aparecer */
+    /* La tarjeta se mantiene flotando sutilmente en el espacio */
     animation: flotar 4s ease-in-out infinite alternate 1s; 
 }
 
@@ -97,14 +97,14 @@ body {
 }
 
 /* --- ANIMACIONES EN CASCADA PARA EL CONTENIDO --- */
-/* Preparamos todos los elementos para que nazcan ocultos */
+/* Preparamos todos los elementos para que nazcan ocultos y caigan de arriba */
 .titulo-gala, .nombre, .frase-invitacion, .galeria, .detalles, .frase-cierre {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-/* El orden exacto de aparición (cada uno tarda 0.2s más que el anterior) */
+/* Orden exacto de aparición progresiva */
 .mostrar .titulo-gala      { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
 .mostrar .nombre           { opacity: 1; transform: translateY(0); transition-delay: 0.8s; }
 .mostrar .frase-invitacion { opacity: 1; transform: translateY(0); transition-delay: 1.0s; }
@@ -112,21 +112,80 @@ body {
 .mostrar .detalles         { opacity: 1; transform: translateY(0); transition-delay: 1.4s; }
 .mostrar .frase-cierre     { opacity: 1; transform: translateY(0); transition-delay: 1.6s; }
 
-/* Estilos de los nuevos textos */
+/* Tipografía de Textos */
+.titulo-gala {
+    font-family: 'Cinzel', serif;
+    color: #D4AF37;
+    font-size: 2.2rem;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); 
+}
+
+.nombre {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: #FFFFFF;
+}
+
 .frase-invitacion {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.05rem;
     color: #F5F5F5;
     margin-bottom: 25px;
-    font-style: italic; /* Le da un toque cursivo elegante */
+    font-style: italic; 
 }
 
 .frase-cierre {
     font-family: 'Cinzel', serif;
-    color: #D4AF37; /* Dorado para resaltar el final */
+    color: #D4AF37; 
     font-size: 1.5rem;
     margin-top: 25px;
+    margin-bottom: 0; /* Ajuste para que no genere scroll innecesario al fondo */
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
+}
+
+/* Galería de 3 Fotos */
+.galeria {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.foto-egresado {
+    width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border: 2px solid #D4AF37;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+/* El desorden programado */
+.f1 { transform: rotate(-5deg); }
+.f2 { transform: translateY(-10px); z-index: 2; }
+.f3 { transform: rotate(5deg); }
+
+/* Efecto al pasar el dedo o ratón por las fotos */
+.foto-egresado:hover {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 10;
+}
+
+/* Detalles de Hora y Lugar */
+.detalles p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
+.contador {
+    color: #D4AF37;
+    font-weight: 600;
+    margin-top: 15px !important;
+    font-size: 1.2rem !important;
 }
