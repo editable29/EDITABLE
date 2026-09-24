@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Graduación</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="escenario">
+        
+        <!-- Fase 1: El Sobre y el Sello -->
+        <div id="envoltura" class="envoltura">
+            <img src="sobre.png" class="sobre" alt="Sobre de gala">
+            <img src="sello.png" id="sello" class="sello" alt="Toca para abrir">
+        </div>
+
+        <!-- Fase 2: La Tarjeta con Fotos -->
+        <div id="tarjeta" class="tarjeta oculto">
+            <h1 class="titulo-gala">Graduación</h1>
+            <h2 class="nombre">Nombre del Egresado</h2>
+            
+            <!-- Las 3 Fotos de Muestra -->
+            <div class="galeria">
+                <img src="foto1.jpg" class="foto-egresado f1" alt="Foto 1">
+                <img src="foto2.jpg" class="foto-egresado f2" alt="Foto 2">
+                <img src="foto3.jpg" class="foto-egresado f3" alt="Foto 3">
+            </div>
+
+            <div class="detalles">
+                <p><strong>Fecha:</strong> Sábado, 12 de Diciembre</p>
+                <p><strong>Hora:</strong> 8:00 PM</p>
+                <p class="contador" id="contador">Calculando tiempo...</p>
+            </div>
+
+            <div class="acciones">
+                <a href="#" target="_blank" class="btn-dorado">Cómo Llegar</a>
+                <a href="#" target="_blank" class="btn-dorado">Confirmar Asistencia</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
