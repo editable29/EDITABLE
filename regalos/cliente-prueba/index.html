@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Sorpresa de Cumpleaños!</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Importamos fuentes modernas de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="contenedor">
+        <!-- La Caja de Regalo -->
+        <img src="caja.jpeg" alt="Toca para abrir" id="caja" class="caja-animada">
+
+        <!-- La Sorpresa (Oculta al principio) -->
+        <div id="sorpresa" class="oculto">
+            <h1 class="titulo">¡Feliz Cumpleaños!</h1>
+            <img src="foto.jpg" alt="Foto del cumpleañero" class="foto-nino">
+            <p class="mensaje">¡Que tengas un día mágico lleno de juegos y aventuras!</p>
+        </div>
+    </div>
+
+    <!-- Archivo de música oculto -->
+    <audio id="musica" src="musica.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
