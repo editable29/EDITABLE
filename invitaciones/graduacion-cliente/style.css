@@ -1,0 +1,167 @@
+/* Configuración Base */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0B132B; /* Azul Medianoche */
+    color: #F5F5F5;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.escenario {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* El Sobre y Sello */
+.envoltura {
+    position: relative;
+    transition: all 1s ease;
+    z-index: 10;
+}
+
+.sobre {
+    width: 90%;
+    max-width: 400px;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+}
+
+.sello {
+    position: absolute;
+    top: 50%; /* Ajusta si tu sobre tiene una forma diferente */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    cursor: pointer;
+    animation: pulso 2s infinite;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sello:active {
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+@keyframes pulso {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.08); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.desaparecer {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(50px) scale(0.9);
+}
+
+/* La Tarjeta Interior */
+.tarjeta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    background-color: rgba(11, 19, 43, 0.95);
+    border: 2px solid #D4AF37; /* Oro Metálico */
+    padding: 30px 15px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
+    z-index: 5;
+    /* Para que el usuario pueda hacer scroll si la pantalla es pequeña */
+    max-height: 85vh; 
+    overflow-y: auto; 
+}
+
+.oculto {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 20%); 
+}
+
+.mostrar {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%);
+    transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Textos */
+.titulo-gala {
+    font-family: 'Cinzel', serif;
+    color: #D4AF37;
+    font-size: 2.2rem;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+}
+
+.nombre {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: #FFFFFF;
+}
+
+/* Galería de 3 Fotos */
+.galeria {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.foto-egresado {
+    width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border: 2px solid #D4AF37;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+/* Damos un toque de desorden elegante a las fotos */
+.f1 { transform: rotate(-5deg); }
+.f2 { transform: translateY(-10px); z-index: 2; }
+.f3 { transform: rotate(5deg); }
+
+.foto-egresado:hover {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 10;
+}
+
+/* Detalles y Botones */
+.detalles p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
+.contador {
+    color: #D4AF37;
+    font-weight: 600;
+    margin-top: 15px !important;
+    font-size: 1.1rem !important;
+}
+
+.btn-dorado {
+    display: block;
+    background-color: #D4AF37;
+    color: #0B132B;
+    text-decoration: none;
+    padding: 14px 20px;
+    margin: 15px auto;
+    font-weight: 600;
+    border-radius: 6px;
+    width: 85%;
+    transition: background 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-dorado:hover {
+    background-color: #F5D061;
+}
