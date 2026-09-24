@@ -4,36 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación de Graduación</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600;italic&display=swap" rel="stylesheet">
+    
+    <!-- Todo el Diseño (CSS) blindado dentro del HTML -->
+    <style>
+        body {
+            margin: 0; padding: 0; background-color: #0B132B; color: #F5F5F5;
+            font-family: 'Montserrat', sans-serif; display: flex;
+            justify-content: center; align-items: center; min-height: 100vh;
+            overflow: hidden; 
+        }
+
+        #preloader {
+            position: fixed; inset: 0; background-color: #0B132B; z-index: 9999;
+            display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease;
+        }
+
+        .spinner {
+            width: 40px; height: 40px; border: 3px solid rgba(212, 175, 55, 0.3);
+            border-top-color: #D4AF37; border-radius: 50%; animation: girar 1s linear infinite;
+        }
+
+        @keyframes girar { to { transform: rotate(360deg); } }
+
+        .escenario { position: relative; width: 100%; max-width: 450px; text-align: center; }
+        .envoltura { position: relative; transition: all 1s ease; z-index: 10; }
+        .sobre { width: 90%; max-width: 400px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5)); }
+        
+        .sello {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80px; cursor: pointer; animation: pulso 2s infinite;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .sello:active { transform: translate(-50%, -50%) scale(0.9); }
+
+        @keyframes pulso {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.08); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .desaparecer { opacity: 0; pointer-events: none; transform: translateY(50px) scale(0.9); }
+
+        .tarjeta {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 85%; background-color: rgba(11, 19, 43, 0.95); border: 2px solid #D4AF37; 
+            padding: 30px 15px; border-radius: 12px; box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            z-index: 5; max-height: 85vh; overflow-y: auto; 
+        }
+
+        .oculto { opacity: 0; visibility: hidden; transform: translate(-50%, 20%); }
+        .mostrar {
+            opacity: 1; visibility: visible; transform: translate(-50%, -50%);
+            transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+            animation: flotar 4s ease-in-out infinite alternate 1s; 
+        }
+
+        @keyframes flotar {
+            from { transform: translate(-50%, -50%); }
+            to { transform: translate(-50%, -53%); }
+        }
+
+        .titulo-gala, .nombre, .frase-invitacion, .galeria, .detalles, .frase-cierre {
+            opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .mostrar .titulo-gala { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+        .mostrar .nombre { opacity: 1; transform: translateY(0); transition-delay: 0.8s; }
+        .mostrar .frase-invitacion { opacity: 1; transform: translateY(0); transition-delay: 1.0s; }
+        .mostrar .galeria { opacity: 1; transform: translateY(0); transition-delay: 1.2s; }
+        .mostrar .detalles { opacity: 1; transform: translateY(0); transition-delay: 1.4s; }
+        .mostrar .frase-cierre { opacity: 1; transform: translateY(0); transition-delay: 1.6s; }
+
+        .titulo-gala { font-family: 'Cinzel', serif; color: #D4AF37; font-size: 2.2rem; margin: 0 0 10px 0; letter-spacing: 2px; text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+        .nombre { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-bottom: 20px; color: #FFFFFF; }
+        .frase-invitacion { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; color: #F5F5F5; margin-bottom: 25px; font-style: italic; }
+        .frase-cierre { font-family: 'Cinzel', serif; color: #D4AF37; font-size: 1.5rem; margin-top: 25px; margin-bottom: 0; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .detalles p { margin: 8px 0; font-size: 0.95rem; }
+        .contador { color: #D4AF37; font-weight: 600; margin-top: 15px !important; font-size: 1.2rem !important; }
+
+        .galeria { display: flex; justify-content: center; gap: 12px; margin-bottom: 25px; }
+
+        /* Contenedor que obliga a las fotos a ser de 80x110 sin importar su tamaño real */
+        .marco-foto {
+            width: 80px; height: 110px; border: 2px solid #D4AF37; border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: transform 0.3s ease, z-index 0.3s ease;
+            overflow: hidden; background-color: #0B132B;
+        }
+        
+        .foto-egresado { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        .f1 { transform: rotate(-6deg); }
+        .f2 { transform: translateY(-12px); z-index: 2; }
+        .f3 { transform: rotate(6deg); }
+        .marco-foto:hover { transform: scale(1.15) rotate(0deg); z-index: 10; }
+    </style>
 </head>
 <body>
 
-    <!-- Pantalla de Carga (Garantiza que nada se vea roto) -->
-    <div id="preloader">
-        <div class="spinner"></div>
-    </div>
-
-    <!-- Audio Oculto -->
+    <div id="preloader"><div class="spinner"></div></div>
     <audio id="musica" src="musica.mp3"></audio>
 
     <div class="escenario">
-        
-        <!-- Fase 1: El Sobre y el Sello -->
         <div id="envoltura" class="envoltura">
             <img src="sobre.png" class="sobre" alt="Sobre de gala">
             <img src="sello.png" id="sello" class="sello" alt="Toca para abrir">
         </div>
 
-        <!-- Fase 2: La Tarjeta con Fotos Animadas y Textos -->
         <div id="tarjeta" class="tarjeta oculto">
             <h1 class="titulo-gala">Graduación</h1>
             <h2 class="nombre">Nombre del Egresado</h2>
-            
             <p class="frase-invitacion">¡Ven a mi fiesta de graduación!</p>
             
             <div class="galeria">
-                <!-- Se añade un contenedor extra para blindar el tamaño de las fotos -->
                 <div class="marco-foto f1"><img src="foto1.jpg" class="foto-egresado" alt="Foto 1"></div>
                 <div class="marco-foto f2"><img src="foto2.jpg" class="foto-egresado" alt="Foto 2"></div>
                 <div class="marco-foto f3"><img src="foto3.jpg" class="foto-egresado" alt="Foto 3"></div>
@@ -45,11 +128,53 @@
                 <p><strong>Lugar:</strong> Casa de habitación</p>
                 <p class="contador" id="contador">Calculando tiempo...</p>
             </div>
-
             <p class="frase-cierre">¡No faltes!</p>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Todo el código interactivo (JavaScript) blindado dentro del HTML -->
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => { preloader.style.display = 'none'; }, 500);
+        });
+
+        const sello = document.getElementById('sello');
+        const envoltura = document.getElementById('envoltura');
+        const tarjeta = document.getElementById('tarjeta');
+        const musica = document.getElementById('musica');
+        const textoContador = document.getElementById('contador');
+
+        sello.addEventListener('click', () => {
+            musica.volume = 0.5;
+            musica.play().catch(e => console.log("Audio", e));
+            sello.style.opacity = '0';
+            
+            setTimeout(() => {
+                envoltura.classList.add('desaparecer');
+                setTimeout(() => {
+                    envoltura.style.display = 'none'; 
+                    tarjeta.classList.remove('oculto');
+                    tarjeta.classList.add('mostrar');
+                }, 500); 
+            }, 300); 
+        });
+
+        const fechaFiesta = new Date("December 12, 2026 18:00:00").getTime();
+        const actualizarContador = setInterval(() => {
+            const ahora = new Date().getTime();
+            const distancia = fechaFiesta - ahora;
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+
+            textoContador.innerHTML = `Faltan: ${dias}d ${horas}h ${minutos}m`;
+            if (distancia < 0) {
+                clearInterval(actualizarContador);
+                textoContador.innerHTML = "¡Es hoy! ¡Felicidades!";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
