@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación de Graduación</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Fuentes: Cinzel para títulos, Montserrat para el cuerpo -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;600;italic&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Pantalla de Carga (Garantiza que nada se vea roto) -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Audio Oculto -->
+    <audio id="musica" src="musica.mp3"></audio>
 
     <div class="escenario">
         
@@ -26,9 +33,10 @@
             <p class="frase-invitacion">¡Ven a mi fiesta de graduación!</p>
             
             <div class="galeria">
-                <img src="foto1.jpg" class="foto-egresado f1" alt="Foto 1">
-                <img src="foto2.jpg" class="foto-egresado f2" alt="Foto 2">
-                <img src="foto3.jpg" class="foto-egresado f3" alt="Foto 3">
+                <!-- Se añade un contenedor extra para blindar el tamaño de las fotos -->
+                <div class="marco-foto f1"><img src="foto1.jpg" class="foto-egresado" alt="Foto 1"></div>
+                <div class="marco-foto f2"><img src="foto2.jpg" class="foto-egresado" alt="Foto 2"></div>
+                <div class="marco-foto f3"><img src="foto3.jpg" class="foto-egresado" alt="Foto 3"></div>
             </div>
 
             <div class="detalles">
@@ -40,10 +48,8 @@
 
             <p class="frase-cierre">¡No faltes!</p>
         </div>
-
     </div>
 
-    <!-- Asegúrate de tener tu script.js en la misma carpeta -->
     <script src="script.js"></script>
 </body>
 </html>
